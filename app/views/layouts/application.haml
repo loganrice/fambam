@@ -1,0 +1,19 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Fambam
+    = stylesheet_link_tag('application', media: 'all', 'data-turbolinks-track' => true)
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags 
+  %body
+    = render "layouts/navigation"
+    = if flash[:notice]
+      %div.container
+        %div.alert.alert-info.alert-dismissible.fade.in{ "role" => "alert" }
+          = flash[:notice]
+          %button.close{ "type" => "button", "data-dismiss" => "alert"}
+            %span x
+
+    = yield 
+

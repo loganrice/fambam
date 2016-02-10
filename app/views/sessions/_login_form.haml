@@ -1,0 +1,11 @@
+%div.well
+  = form_tag sessions_path, class: 'sign_in' do
+    %fieldset
+      = label_tag :email
+      = email_field_tag :email
+    %fieldset
+      = label_tag :password
+      = password_field_tag :password
+    %fieldset
+      = submit_tag "Sign in", class: "btn btn-primary"
+
