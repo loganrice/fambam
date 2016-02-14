@@ -1,20 +1,25 @@
 class App.imageUploader
-  constructor: (@dropArea, @formArea) ->
-    Dropzone.autoDiscover = false;
-    $(@dropArea).dropzone({
+  constructor: (@templateHtml) ->
+    @dropArea = new Dropzone(document.body, {
       url: "/images",
       maxFilesize: 1,
+      thumbnailWidth: 80,
+      thumbnailHeight: 80,
       paramName: "image[file]",
-      addRemoveLinks: true
+      addRemoveLinks: true,
+      previewTemplate: @templateHtml,
+      previewsContainer: "#previews",
+      clickable: 'body',
+      addRemoveLinks: false
     })
-
+      
   render: ->
-    $(@imageInput).change ->
-      $(@formArea).submit()
 
 $(document).on "page:change", ->
   return unless $(".images.new").length > 0
-  imageUploader = new App.imageUploader("#dropArea", "#imageInput")
+  templateHtml = $(".imageUploadTemplate").parent().html()
+  $(".imageUploadTemplate").remove()
+  imageUploader = new App.imageUploader(templateHtml)
   imageUploader.render()
 
 

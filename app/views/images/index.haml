@@ -1,1 +1,10 @@
-%div hello world
+%div.container
+  %div.row
+    %div.col-lg-12
+      %h1 Family Photos
+  %div.row
+    - @images.each do |image|
+      %div.col-lg-3.col-md-4.col-xs-6.thumb
+        %a.thumbnail{"href" => "#"}
+          %img.img-responsive{"src" => "#{image.file.thumb.file.url}"}
+

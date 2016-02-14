@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   before_action :authenticate_person!
 
   def index
-    
+    @images = Image.all
   end
 
   def new
@@ -11,6 +11,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
+    @image.file = params["file"]
     if @image.save
       render :json => @image.as_json
     end

@@ -9,6 +9,25 @@ describe ImagesController do
         expect(response).to redirect_to sign_in_path
       end
     end
+
+    context "with authenticated person" do
+      before { set_current_person }
+      after { clear_current_signed_in_person }
+
+      it "renders the index template" do
+        get :index
+
+        expect(response).to render_template :index
+      end
+
+      it "assigns @images" do
+        an_image = Fabricate(:image)
+
+        get :index
+
+        expect(assigns(:images)).to eq([an_image])
+      end
+    end
   end
 
   describe "GET new" do

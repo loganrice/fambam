@@ -1,8 +1,10 @@
-%main
-  %section
-    %div#dropzone
-      = form_for(@image, :html => {class: "dropzone dz-clickable", id: "dropArea"}) do |f|
-        = f.file_field :file, class: "hidden", id: "imageInput"
-        = f.submit 'upload image', class: "hidden"
+%h1.text-center.text-info Drag and Drop Images To Upload
+= form_for(@image, :html => {class: "dropzone hidden", id: "dropArea"}) do |f|
+  = f.file_field :file, class: "dz-clickable", id: "imageInput"
+  = f.submit 'upload image', class: ""
+
+%div.container
+  %div.table.table-striped.files#previews
+    = render "imageUploadRow"
 
 
