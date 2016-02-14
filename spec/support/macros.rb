@@ -14,3 +14,11 @@ end
 def set_current_person(a_person =nil)
   session[:person_id] = (a_person || Fabricate(:person)).id.to_s
 end
+
+def clear_current_signed_in_person
+  session[:user_id] = nil
+end
+
+def submit_form
+  find('input[name="commit"]').click
+end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   delete 'sign_out', to: 'sessions#destroy'
 
   resources :sessions, only: [:create, :destroy]
-
+  resources :images, only: [:index, :new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

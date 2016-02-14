@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213172444) do
+ActiveRecord::Schema.define(version: 20160213190427) do
 
   create_table "images", force: :cascade do |t|
     t.string   "attachments"
     t.text     "label"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file"
   end
 
   create_table "people", force: :cascade do |t|
