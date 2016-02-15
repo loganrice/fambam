@@ -9,7 +9,7 @@ feature "person uploads an image" do
     attach_file("imageInput", File.expand_path('spec/fixtures/family_photo.png'))
     submit_form
     
-    expect(page).to have_content "family_photo.png"
+    expect(page.status_code).to eq(200)
 
   end 
   

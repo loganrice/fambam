@@ -5,6 +5,6 @@
   %div.row
     - @images.each do |image|
       %div.col-lg-3.col-md-4.col-xs-6.thumb
-        %a.thumbnail{"href" => "#"}
-          %img.img-responsive{"src" => "#{image.file.thumb.file.url}"}
+        = link_to image_path(image), class: "thumbnail" do
+          %img.img-responsive{"src" => "#{image.thumb_url}"}
 

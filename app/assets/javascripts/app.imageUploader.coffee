@@ -2,7 +2,7 @@ class App.imageUploader
   constructor: (@templateHtml) ->
     @dropArea = new Dropzone(document.body, {
       url: "/images",
-      maxFilesize: 1,
+      maxFilesize: 5,
       thumbnailWidth: 80,
       thumbnailHeight: 80,
       paramName: "image[file]",

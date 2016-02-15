@@ -10,17 +10,21 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(image_params)
+    @image = Image.new(person: current_person)
     @image.file = params["file"]
     if @image.save
       render :json => @image.as_json
     end
   end
 
+  def show
+    @image = Image.find(params[:id])
+  end
+
   private
 
   def image_params
-    params.require(:image).permit(:file)
+    params.require(:image).permit(:file, :person)
   end
 
 end

@@ -11,7 +11,10 @@ describe ImagesController do
     end
 
     context "with authenticated person" do
-      before { set_current_person }
+      before do
+        @person_id = set_current_person.to_i
+      end
+
       after { clear_current_signed_in_person }
 
       it "renders the index template" do
@@ -21,7 +24,7 @@ describe ImagesController do
       end
 
       it "assigns @images" do
-        an_image = Fabricate(:image)
+        an_image = Fabricate(:image, person_id: @person_id)
 
         get :index
 
@@ -58,22 +61,44 @@ describe ImagesController do
   end
 
   describe "POST create" do
-    before do 
-      set_current_person 
+    context "with authenticated person" do
+      before { set_current_person }
+      after { clear_current_signed_in_person }
+      
+      it "renders json" do
+        xhr :post, :create, image: {}, file: fixture_file_upload('family_photo.png', 'image/png') 
+
+        expect(JSON.parse(response.body)).to eq(Image.last.as_json)
+      end
+
+      it "creates a new image" do
+        expect {
+          xhr :post, :create, image: {file: fixture_file_upload('family_photo.png', 'image/png') }
+        }.to change(Image, :count).by(1)
+      end
     end
+  end
 
-    after { clear_current_signed_in_person }
-    
-    it "renders json" do
-      xhr :post, :create, image: {file: fixture_file_upload('family_photo.png', 'image/png') }
+  describe "GET show" do
+    context "with authenticated person" do
+      before do
+        a_person_id = set_current_person.to_i
+        @an_image = Fabricate(:image, person_id: a_person_id)
+      end
 
-      expect(JSON.parse(response.body)).to eq(Image.last.as_json)
-    end
+      after { clear_current_signed_in_person }
 
-    it "creates a new image" do
-      expect {
-        xhr :post, :create, image: {file: fixture_file_upload('family_photo.png', 'image/png') }
-      }.to change(Image, :count).by(1)
+      it "renders the show template" do
+        get :show, id: @an_image.id
+
+        expect(response).to render_template :show
+      end
+
+      it "sets @image" do
+        get :show, id: @an_image.id
+
+        expect(assigns(:image)).to be_a Image
+      end
     end
   end
 end

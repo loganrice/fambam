@@ -1,0 +1,10 @@
+%div.container-fluid
+  %div.row
+    %div.col-lg-4.col-md-4.col-xs-12 
+      %h3 Details 
+      %div.list-group
+        = link_to_follow_or_unfollow(@image.person) 
+          
+        %a.list-group-item Erin, Addison, Jack
+    %div.col-lg-8.col-md-8.col-xs-12
+      %img.img-responsive.img-rounded{"src" => @image.file_url }

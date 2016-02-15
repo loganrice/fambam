@@ -48,6 +48,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'fabrication'
   gem 'faker'
   gem 'capybara'

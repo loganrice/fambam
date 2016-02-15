@@ -22,3 +22,11 @@ end
 def submit_form
   find('input[name="commit"]').click
 end
+
+def mock_file
+  Fabricate(:image, person_id: Fabricate(:person).id).file
+end
+
+def simulate_coming_from_images_path(image = 1)
+  request.env["HTTP_REFERER"] = "/images/1"
+end
