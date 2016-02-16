@@ -37,6 +37,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
     addressable (2.4.0)
     arel (6.0.3)
     autoprefixer-rails (6.3.3)
@@ -185,7 +187,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (0.4.0)
+    fog-vsphere (0.6.0)
       fog-core
       rbvmomi (~> 1.8)
     fog-xenserver (0.2.3)
@@ -195,6 +197,7 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
+    geocoder (1.2.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -216,7 +219,6 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.99)
-    mini_magick (4.2.4)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
@@ -264,6 +266,7 @@ GEM
       trollop
     rdoc (4.2.2)
       json (~> 1.4)
+    rmagick (2.15.4)
     rspec-core (3.4.2)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -291,7 +294,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    shoulda-matchers (3.1.0)
+    shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
@@ -329,6 +332,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 3.4)
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.6)
   byebug
@@ -339,13 +343,14 @@ DEPENDENCIES
   fabrication
   faker
   fog
+  geocoder
   haml
   jbuilder (~> 2.0)
   jquery-rails
-  mini_magick
   pg
   pry-byebug
   rails (= 4.2.4)
+  rmagick
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -31,9 +32,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem "fog"
+gem 'fog'
 gem 'carrierwave'
-gem 'mini_magick'
+# gem 'mini_magick'
+gem 'rmagick', :require => 'RMagick' # Image processing
+gem 'geocoder'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

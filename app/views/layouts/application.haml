@@ -8,8 +8,6 @@
     = csrf_meta_tags 
   %body{ "class" => "#{controller_name} #{action_name}"}
     = render "layouts/navigation"
-    = if flash[:notice]
-      = render "layouts/notice"
-
+    = render "shared/messages"
     = yield 
 

@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   root 'images#index'
+
   get 'sign_in', to: 'sessions#new'
   delete 'sign_out', to: 'sessions#destroy'
+
+  get 'place_tags/:tag', to: 'places#index', as: :place_tag
 
   resources :sessions, only: [:create, :destroy]
   resources :images, only: [:index, :new, :create, :show]
   resources :relationships, only: [:index, :create, :destroy]
+  resources :places, only: [:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,7 +11,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(person: current_person)
-    @image.file = params["file"]
+    @image.file = params["image"]["file"]
     if @image.save
       render :json => @image.as_json
     end

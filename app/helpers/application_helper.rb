@@ -2,6 +2,8 @@ module ApplicationHelper
   def link_to_follow_or_unfollow(person, relationship_id = nil)
     if current_person.can_follow? person
       link_to_follow person
+    elsif current_person == person
+      content_tag :div, person.email, class: "list-group-item"
     else
       link_to_unfollow person
     end

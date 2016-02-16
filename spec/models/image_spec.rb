@@ -15,8 +15,7 @@ describe Image do
 
   describe '.thumb_url' do
     it 'includes the file thumb url' do
-      an_image = Image.create(file: mock_file)
-
+      an_image = mock_file
       expect(an_image.thumb_url).to eq(an_image.file.thumb.url)
     end
 
@@ -26,4 +25,5 @@ describe Image do
       expect(an_image.thumb_url).to eq("")
     end
   end
+
 end

@@ -11,6 +11,9 @@
     %div#navbar-collapse-target.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          = link_to "Sign Out", sign_out_path, method: :delete
+          = link_to "Places", places_path
+        %li
         %li
           = link_to "Add Photo", new_image_path
+        %li
+          = link_to "Sign Out", sign_out_path, method: :delete

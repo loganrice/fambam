@@ -4,7 +4,17 @@
       %h3 Details 
       %div.list-group
         = link_to_follow_or_unfollow(@image.person) 
-          
-        %a.list-group-item Erin, Addison, Jack
+        %div.list-group-item 
+          %strong Longitude
+          = @image.longitude
+        %div.list-group-item 
+          %strong Latitude
+          = @image.latitude
+        %div.list-group-item 
+          %strong City
+          = @image.city
+        %div.list-group-item 
+          %strong State
+          = @image.country
     %div.col-lg-8.col-md-8.col-xs-12
       %img.img-responsive.img-rounded{"src" => @image.file_url }
